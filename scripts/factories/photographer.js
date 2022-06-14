@@ -5,19 +5,28 @@ function photographerFactory(data) {
     const picture = `assets/photographers/${portrait}`;
    
     function getUserCardDOM() {
+        const a = document.createElement('a');
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
+        img.alt="";
+        a.setAttribute("aria-label",`${name}`)
+        a.setAttribute("role",`link`)
+        a.href = `#${name}`
         const h2 = document.createElement( 'h2' );
         const h3 = document.createElement('h3');
         const p = document.createElement('p');
         const h4 = document.createElement('h4');
+        h3.setAttribute("aria-describedby","city, country");
+        p.setAttribute("aria-describedby","tagline");
+        h4.setAttribute("aria-describedby","price per day");
         h2.innerHTML = name;
         h3.innerHTML = `${city}, ${country}`
         p.innerHTML = tagline;
         h4.innerHTML = `${price}€/jour`;
-        article.appendChild(img);
-        article.appendChild(h2);
+        article.appendChild(a);
+        a.appendChild(img);
+        a.appendChild(h2);
         article.appendChild(h3);
         article.appendChild(p);
         article.appendChild(h4);
