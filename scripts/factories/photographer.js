@@ -12,7 +12,7 @@ function photographerFactory(data) {
         img.alt="";
         a.setAttribute("aria-label",`${name}`)
         a.setAttribute("role",`link`)
-        a.href = `name=${name}`
+        a.href = `photographer.html?id=${id}`
         const h2 = document.createElement( 'h2' );
         const h3 = document.createElement('h3');
         const p = document.createElement('p');
@@ -35,6 +35,8 @@ function photographerFactory(data) {
     
     return { name, portrait, id, title, city, price, tagline, country, getUserCardDOM }
 }
+
+
 
 
 

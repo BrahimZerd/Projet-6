@@ -86,4 +86,23 @@ h1 {
     text-align: center;
     text-decoration: none;
 }
+.photograph-header{
+    position:relative;
+    display: grid;
+}
+.photograph-header article {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.photograph-header img {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}
 
+
+.contact_button {
+ margin: auto; 
+}
