@@ -94,15 +94,71 @@ h1 {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
 }
 .photograph-header img {
     object-fit: cover;
     border-radius: 50%;
     height: 200px;
     width: 200px;
+   order : 3;
 }
-
 
 .contact_button {
- margin: auto; 
+    order: 2;
 }
+.photograph-header h2 {
+    color: #D3573C;
+    font-weight: 400;
+    font-size: 64px;
+}
+
+.photograph-header h3 {
+    font-weight: 400;
+    font-size: 24px;
+    color: #901C1C;
+    line-height: 0px;
+}
+.photograph-header p {
+   color: #525252;
+   font-size: 18px
+}
+
+select {
+    background-color: #901C1C;
+    color: #ffff;
+    border-radius: 5px;
+    border : 0;
+    height: 40px;
+    width: 140px;
+    font-size: 18px;
+    appearance: none;
+    position: relative;
+    padding-left: 1rem;
+
+}
+.custom-arrow {
+    display: block;
+    height: .9rem;
+    width: .9rem;
+    border-bottom: 3px solid white;
+    border-left: 3px solid white;
+    rotate: 135deg;
+    position: absolute;
+    top: 1rem;
+    left: 17.9rem;
+}
+.custom-arrow:hover{
+    transform: rotate(180deg);
+}
+nav {
+    position: relative;
+}
+label {
+    margin-left: 100px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+

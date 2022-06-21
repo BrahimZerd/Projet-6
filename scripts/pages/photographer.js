@@ -29,12 +29,15 @@ photographer.photographers.forEach((photographer) => {
 const PhotographerMedia = photographer.media.filter(media => media.photographerId == id);
 console.log(PhotographerMedia);
 })();
+
+//création du header de chaque photographe
 function photographerFactory(data) {
    
     const { name, portrait, id, title, city, price, tagline, country } = data;
     const picture = `assets/photographers/${portrait}`;
     function photographHeaderDOM() {
         const a = document.createElement('a');
+        const button = document.querySelector(".contact_button")
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
         const bloc = document.createElement('div')
@@ -46,6 +49,7 @@ function photographerFactory(data) {
         h2.innerHTML = name;
         h3.innerHTML = `${city}, ${country}`
         p.innerHTML = tagline;
+        article.appendChild(button);
         article.appendChild(bloc);
         article.appendChild(img);
         bloc.appendChild(h2);
