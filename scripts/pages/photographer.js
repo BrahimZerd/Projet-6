@@ -16,10 +16,11 @@ function getPhotographersId() {
 (async function() {
     const id = getPhotographersId();
     const photographer = await getPhotographers()
-
+    const photographerLikes = document.querySelector(".photographer-informations"); 
     //récupération des liens id => photographes.
     photographer.photographers.forEach((photographer) => {
     if(photographer.id == id) {
+        console.log(photographer.price)
         displayData(photographer)
     };
 })
@@ -28,18 +29,20 @@ function getPhotographersId() {
     const photographerMedia = photographer.media.filter(media => media.photographerId == id);
     let mediaLikesTable = [];
     let totalLikes = 0;
-
+    
     photographerMedia.forEach((photographerMedia) => {
     DisplayMedia(photographerMedia);
     mediaLikesTable.push(photographerMedia.likes);
+    totalLikes += photographerMedia.likes
 })
 
 //récupération du total de likes dans les médias de chaque photographe
-    for(i = 0; i < mediaLikesTable.length; i++) {
-    totalLikes += mediaLikesTable[i];
-}
+
 //nombre de likes total à implémenter plus tard
-    console.log(totalLikes);   
+    console.log(totalLikes);
+    
+//ajout des likes dans le bloc informations de chaque photographe     
+    photographerLikes.innerHTML = `${totalLikes}`
 })();
 
 async function displayData(photographer) {
@@ -50,7 +53,6 @@ async function displayData(photographer) {
 };
 
  async function DisplayMedia(photographerMedia) {  
-    
     const photographerBook = document.querySelector(".photographer-book");
     const photographerBookModel = PhotographerMediaFactory(photographerMedia);
     const UserCard = photographerBookModel.photographerBookDOM();
@@ -58,7 +60,9 @@ async function displayData(photographer) {
 } 
 
 
-   
+
+
+
 
 
 

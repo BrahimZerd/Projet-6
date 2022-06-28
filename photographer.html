@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang = "en">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -9,10 +9,13 @@
   </head>
   <body>
     <header>
-      <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" role ="logo link" aria-label ="link to home page" alt = ""/>
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header" id="photograph-header">
+        <div class="photographer-informations" id="photographer-informations" aria-labelledby="likes_and_price"></div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
       
@@ -25,9 +28,7 @@
         </select>
         <span class="custom-arrow"></span>
       </nav>
-      <div class="photographer-book" id="photographer-book">
-        <div class="photographer-informations" id="photographer-informations">
-        </div>
+      <div class="photographer-book" id="photographer-book"></div>
       </div>
       
     </main>
