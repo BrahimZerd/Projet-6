@@ -32,16 +32,22 @@
       </div>
       
     </main>
-    <div id="contact_modal">
-			<div class="modal">
+    <div id="contact_modal" role = "dialog" aria-hidden="true" aria-describedby="modalTitle">
+			<div class="modal" >
 				<header>
-          <h2>Contactez-moi</h2>
+          <h2 id="modalTitle">Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="first name">Prénom</label>
+						<input type="text" name="first name" required />
+            <label for ="last name">Nom</label>
+            <input type ="text" name ="last name" required/>
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Email Address" required />
+            <label>Votre message</label>
+            <input />
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
