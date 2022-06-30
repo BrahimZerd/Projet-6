@@ -90,3 +90,53 @@ form input {
     font-size: 36px;
     white-space:normal;
 }
+
+.lightbox{
+    position: fixed;
+    
+    width: 1253px;
+   height: 900px;
+   left: 350px;
+    top: 40px;
+    bottom: 40px;
+    background-color: #FFFFFF;
+    border: 2px solid #95FFF9;
+    z-index: 10;
+    margin: auto 0;
+}
+
+.lightbox__next,
+.lightbox__previous{
+    border:none;
+    background: url(../assets/icons/next&previous.svg) center center / 100% 100%;
+    width : 29px;
+    height: 48px;
+    position: fixed;
+    top: 50%;
+    right: 351px;
+    margin-top: -14px;
+    z-index: 11;
+    cursor: pointer;
+    text-indent: -5000px;
+}
+
+.lightbox__previous{
+    left: 391px;
+    text-indent: -5000px;
+    transform: rotate(180deg);
+}
+
+.lightbox__close {
+    border:none;
+    background: url(../assets/icons/close.svg) center center / 100% 100%;
+    width: 42px;
+    height: 42px;
+    position: fixed;
+    right: 341px;
+    top: 77px;
+    z-index: 12;
+    margin-top: -14px;
+    cursor: pointer;
+    text-indent: -5000px;
+    color: #901C1C;
+}

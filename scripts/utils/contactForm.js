@@ -18,7 +18,10 @@ function displayModal(e) {
                                        
 } 
 
-
+if( modal.style.display =" block") {
+    main.blur();
+    modal.focus();
+}
 
     
 

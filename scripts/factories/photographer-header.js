@@ -4,7 +4,6 @@ function photographerFactory(data) {
     const { name, portrait, id, title, city, price, tagline, country } = data;
     const picture = `assets/photographers/${portrait}`;
     function photographHeaderDOM() {
-        const modalTitle = document.getElementById('modalTitle');
         const button = document.querySelector(".contact_button")
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
@@ -17,13 +16,13 @@ function photographerFactory(data) {
         h1.innerHTML = name;
         h2.innerHTML = `${city}, ${country}`
         p.innerHTML = tagline;
-        modalTitle.appendChild(h1);
         article.appendChild(button);
         article.appendChild(bloc);
         article.appendChild(img);
         bloc.appendChild(h1);
         bloc.appendChild(h2);
         bloc.appendChild(p);
+        
         
         return (article);
     }

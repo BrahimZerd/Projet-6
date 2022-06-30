@@ -8,15 +8,18 @@ async function getPhotographers() {
             console.log("Something not happened well")
         })
 }
+
 //récupération de l'id du photographe
 function getPhotographersId() {
     return new URL(location.href).searchParams.get("id")
 }
+
 //fonction de récupérations des datas lié à l'ID du photographe
 (async function() {
     const id = getPhotographersId();
     const photographer = await getPhotographers()
-    const photographerLikes = document.querySelector(".photographer-informations"); 
+    const photographerLikes = document.querySelector(".photographer-informations");
+    
     //récupération des liens id => photographes.
     photographer.photographers.forEach((photographer) => {
     if(photographer.id == id) {
@@ -40,15 +43,12 @@ function getPhotographersId() {
     mediaLikesTable.push(photographerMedia.likes);
     totalLikes += photographerMedia.likes
 })
-
-//récupération du total de likes dans les médias de chaque photographe
-
-//nombre de likes total à implémenter plus tard
-    console.log(totalLikes);
-    
-//ajout des likes dans le bloc informations de chaque photographe     
-    photographerLikes.innerHTML = `${totalLikes}`
+   photographerLikes.innerHTML = `${totalLikes}`
 })();
+
+
+
+
 
 async function displayData(photographer) {
     const photographerheader = document.querySelector(".photograph-header");
@@ -58,14 +58,27 @@ async function displayData(photographer) {
     
 };
 
- async function DisplayMedia(photographerMedia) {  
+
+async function DisplayMedia(photographerMedia) {  
     const photographerBook = document.querySelector(".photographer-book");
     const photographerBookModel = PhotographerMediaFactory(photographerMedia);
     const UserCard = photographerBookModel.photographerBookDOM();
     photographerBook.appendChild(UserCard);
 } 
 
+class Lightbox {
+     static  initiat() {
+        const allImg = document.getElementsByTagName('img');
+        const photographerBloc = document.getElementsByTagName("article")
+        console.log(photographerBloc);
+        photographerBloc.forEach(allImg => allImg.addEventListener('click',e => {
+            e.preventDefault();
+            new Lightbox(e.currentTarget.getAttribute('src'))
+        }))
+    }
 
+}
+Lightbox.initiat();
 
 
 
