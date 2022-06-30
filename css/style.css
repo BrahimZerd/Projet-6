@@ -3,6 +3,7 @@
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+    
 }
 
 
@@ -139,9 +140,9 @@ select {
     padding-left: 1rem;
 }
 label {
-    margin-left: 100px;
     font-size: 18px;
     font-weight: 700;
+    color: #312E2E;
 }
 .photographer-book {
     display: grid;
@@ -196,4 +197,10 @@ object {
     position: fixed;
     right: 35px;
     bottom: 0px;
+}
+
+#message {
+    height: 175px;
+    width: 100%;
+    font-size: 36px;
 }

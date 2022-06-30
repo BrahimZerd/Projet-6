@@ -1,12 +1,10 @@
 #contact_modal {
     display: none;
-    position: fixed;
-    z-index: 1;
-    left: 450px;
-    top: 10vh;
-    overflow: auto;
+    
 }
-
+*:focus {
+    border: solid 2px blue;
+}                                                                                                                               
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -35,22 +33,32 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    position: fixed;
+    z-index: 1;
+    left: 385px;
+    right: 385px;
+    top: 0;
     
+    width: 669px;
+    height: 85%;
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
+    
 }
 
 .modal header img {
     cursor: pointer;
+    margin-bottom: 145px;
 }
 
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
+    margin-bottom: 125px;
 }
 
 form {
@@ -63,6 +71,7 @@ form {
 form label {
     color: #312E2E;
     font-size: 36px;
+    
 }
 
 form div {
@@ -78,4 +87,6 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 36px;
+    white-space:normal;
 }

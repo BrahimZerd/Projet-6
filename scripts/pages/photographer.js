@@ -20,7 +20,12 @@ function getPhotographersId() {
     //récupération des liens id => photographes.
     photographer.photographers.forEach((photographer) => {
     if(photographer.id == id) {
-        console.log(photographer.price)
+        //ajout du nom dans la modale
+        const modal = document.getElementById("modalTitle");
+        const div = document.createElement('div')
+        modal.appendChild(div);
+        div.innerHTML = photographer.name;
+        //dépôt des données selon l'id du photograph
         displayData(photographer)
     };
 })
@@ -50,6 +55,7 @@ async function displayData(photographer) {
     const photographerModel = photographerFactory(photographer);
     const userCardDOM = photographerModel.photographHeaderDOM();
     photographerheader.appendChild(userCardDOM);
+    
 };
 
  async function DisplayMedia(photographerMedia) {  
