@@ -1,40 +1,45 @@
 //fonction ouverture de la modale
 function displayModal(e) {
-    
+    const closeButton = document.getElementById('close_button');
     const modal = document.getElementById("contact_modal");
-    modal.style.display = "block";
     const main = document.getElementById("main");
+    
+    modal.style.display = "block";
     main.style.opacity = "0.2";
-    main.setAttribute('aria-hidden', 'true')
+    
     //désactivation du scrolling
     window.onscroll = function() {
     window.scrollTo(window.pageYOffset, window.pageXOffset);
     };
+   
     modal.removeAttribute('aria-hidden');
     modal.setAttribute('aria-modal', 'true');
-    
-    let closeButton = document.getElementById('close_button');
     closeButton.setAttribute('tabindex', '1');
-                                       
+    main.setAttribute('aria-hidden', 'true');
 } 
 
-if( modal.style.display =" block") {
-    main.blur();
-    modal.focus();
-}
+
+function catchFocusModal() {}
 
     
 
 //fonction fermeture de la modale
 function closeModal(e) {
     const modal = document.getElementById("contact_modal");
+
     modal.style.display = "none";
     main.style.opacity = "1";
+    //arrêt du scrolling
     window.onscroll = function() {};
     modal.setAttribute('aria-hidden', 'true');
     modal.removeAttribute('aria-modal'); 
 }
 
+const form = document.getElementsByTagName("form");
+console.log(form)
+form.addEventListener('submit', e => {
+    e.preventDefault();
+});
 
 
      

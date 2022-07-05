@@ -15,7 +15,9 @@
     </header>
     <main id="main">
       <div class="photograph-header" id="photograph-header">
-        <div class="photographer-informations" id="photographer-informations" aria-labelledby="likes_and_price"></div>
+        <div class="photographer-informations" id="photographer-informations" aria-labelledby="likes_and_price">
+          
+        </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
       
@@ -41,7 +43,7 @@
 				<form>
 					<div>
 						<label for="first name" aria-label ="first name">Prénom</label>
-						<input type="text" name="first name" id="first name" aria-labelledby="Prénom" autofocus required />
+						<input type="text" name="first name" id="first name" aria-labelledby="Prénom" required />
             <label for ="last name" aria-label ="last name">Nom</label>
             <input type ="text" name ="last name" id="last name"aria-labelledby="last name"required/>
             <label for="email">Email</label>
@@ -53,16 +55,10 @@
 				</form>
 			</div>
 		</div>
-    <div class="lightbox">
-      <button class="lightbox__close">Fermer</button>
-      <button class="lightbox__previous">Précédent</button>
-      <button class="lightbox__next">Suivant</button>
-      <div class="lightbox__container"></div>
-    </div>
     <script src="scripts/factories/photographer-header.js"></script>
     <script src="scripts/factories/photographer-collection.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
     
     
   </body>

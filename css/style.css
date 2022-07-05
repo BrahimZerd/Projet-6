@@ -164,6 +164,7 @@ label {
     width: 300px;
     border-radius: 5px;
     object-fit: cover;
+    cursor: pointer;
 }
 .photographer-book h2 {
     color: #901C1C;
@@ -191,12 +192,18 @@ object {
 .photographer-informations {
     width: 326px;
     height: 55px;
+    font-size:  24px;
+    font-weight: 500;
+    justify-content: space-around;
+    line-height: 54px;
     z-index: 1;
     background-color: #DB8876;
     border-radius: 5px 5px 0px 0px;
+    border: solid 1px #b5533e;
     position: fixed;
     right: 35px;
     bottom: 0px;
+    display: flex;
 }
 
 #message {

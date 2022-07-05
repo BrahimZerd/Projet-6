@@ -5,6 +5,7 @@ function photographerFactory(data) {
     const picture = `assets/photographers/${portrait}`;
    
     function getUserCardDOM() {
+        const photographerLikes = document.getElementById(".photographer-informations");
         const a = document.createElement('a');
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
@@ -17,6 +18,7 @@ function photographerFactory(data) {
         const h3 = document.createElement('h3');
         const p = document.createElement('p');
         const h4 = document.createElement('h4');
+        
         h3.setAttribute("aria-label","city, country");
         p.setAttribute("aria-label","tagline");
         h4.setAttribute("aria-label","price per day");
@@ -24,6 +26,7 @@ function photographerFactory(data) {
         h3.innerHTML = `${city}, ${country}`
         p.innerHTML = tagline;
         h4.innerHTML = `${price}€/jour`;
+        
         article.appendChild(a);
         a.appendChild(img);
         a.appendChild(h2);

@@ -39,7 +39,16 @@
         bloc.appendChild(h2);
         bloc.appendChild(span);
         bloc.appendChild(svg);
-        
+        span.addEventListener('click', function() {
+            let i = `${likes}`
+            i++;
+            span.innerHTML = i;
+            let tableClickLikes = [];
+            tableClickLikes.push(i);
+            console.log(tableClickLikes)
+            
+            
+        })
         return (article);
     }
     return {id, photographerId,name, title,video, image, likes, price, date, photographerBookDOM }
