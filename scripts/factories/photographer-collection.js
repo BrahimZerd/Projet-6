@@ -30,10 +30,10 @@
             const source = document.createElement('source');
             vid.appendChild(source);
             vid.setAttribute("aria-label","video of the photographer");
-            vid.controls = true;
             source.setAttribute("type", "video/mp4")
             source.setAttribute("src", movie)
             h2.setAttribute("aria-label","name of the video");
+            
         }
         article.appendChild(bloc);
         bloc.appendChild(h2);
@@ -43,17 +43,59 @@
             let i = `${likes}`
             i++;
             span.innerHTML = i;
-            let tableClickLikes = [];
-            tableClickLikes.push(i);
-            console.log(tableClickLikes)
-            
-            
+            console.log()
         })
-        return (article);
+        img.addEventListener('click', function(){
+            const dom = document.createElement('div')
+            const main = document.getElementById('main');
+            main.appendChild(dom);
+            dom.setAttribute('id','lightbox');
+            dom.classList.add('lightbox');
+            console.log(picture.indexOf(picture))
+            dom.innerHTML = `
+            
+            <button class="lightbox__close"  onClick="closeLightbox()">Fermer</button>
+            <button class="lightbox__previous" onClick ="previousPicture()">Précédent</button>
+            <button class="lightbox__next" onClick="nextPicture()">Suivant</button>
+            <div class="lightbox__container"><img src="${picture}" alt=""></div>`
+        })
+        vid.addEventListener('click', function(){
+            const dom = document.createElement('div')
+            const main = document.getElementById('main');
+            main.appendChild(dom);
+            dom.setAttribute('id','lightbox');
+            dom.classList.add('lightbox');
+            dom.innerHTML = `
+            
+            <button class="lightbox__close"  onClick="closeLightbox()">Fermer</button>
+            <button class="lightbox__previous" onClick ="previousPicture()">Précédent</button>
+            <button class="lightbox__next" onClick="nextPicture()">Suivant</button>
+            <div class="lightbox__container"><video controls=""><source type="video/mp4"
+            src="${movie}"></video</div>`
+        })
+     console.log(image);
+     
+        
+    
+    return (article);
     }
     return {id, photographerId,name, title,video, image, likes, price, date, photographerBookDOM }
 }
 
+function closeLightbox() {
+    const main = document.getElementById('main');
+    const lightBox = document.getElementById('lightbox');
+    main.removeChild(lightBox);
+}
+
+
+
+
+
+
+
+            
+    
 
 
       

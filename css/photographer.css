@@ -91,9 +91,9 @@ form input {
     white-space:normal;
 }
 
-.lightbox{
+#lightbox{
     position: fixed;
-    
+    display: block;
     width: 1253px;
    height: 900px;
    left: 350px;
@@ -140,4 +140,21 @@ form input {
     text-indent: -5000px;
     color: #901C1C;
 }
-
+.lightbox__container{
+    display: flex;
+    justify-content: center;
+    
+    
+    
+}
+.lightbox__container img{
+  width: 1050px;
+  height: 800px;
+  object-fit: cover;
+  margin-top: 50px;
+}
+.lightbox__container video {
+    height: 800px;
+    width: 800px;
+    margin-top: 50px;
+}
