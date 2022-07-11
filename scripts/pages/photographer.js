@@ -21,9 +21,12 @@ function getPhotographersId() {
     const photographerLikesAndPrice = document.querySelector(".photographer-informations");
     const likeBloc = document.createElement('span');
     const priceBloc = document.createElement('span');
+    const heartBloc = document.createElement('span');
     priceBloc.classList.add("price")
     likeBloc.classList.add('likes')
+    heartBloc.classList.add('heart')
     photographerLikesAndPrice.appendChild(likeBloc);
+    photographerLikesAndPrice.appendChild(heartBloc);
     photographerLikesAndPrice.appendChild(priceBloc);
 
     
@@ -39,9 +42,7 @@ function getPhotographersId() {
 
         // ajout du prix dans le bloc statique pour le prix / jour
         priceBloc.innerHTML = photographer.price + "€ / jour";
-        
 
-        
         //dépôt des données selon l'id du photograph
         displayData(photographer)
     };
@@ -53,28 +54,24 @@ function getPhotographersId() {
     let mediaLikesTable = [];
     let totalLikes = 0;
     
+    
+
     photographerMedia.forEach((photographerMedias) => {
-    DisplayMedia(photographerMedias);
+    DisplayMedia(photographerMedias, photographerMedia);
     mediaLikesTable.push(photographerMedias.likes);
     totalLikes += photographerMedias.likes
-    const previous = photographerMedia.indexOf(photographerMedias)
-    console.log(previous)
-        
-        
+    console.log(photographerMedia)
     
 })
+
+ 
 //ajout des likes et du coeur dans le bloc statique
-   likeBloc.innerHTML = `${totalLikes} <svg width="17" height="18" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-   <path d="M9.125 18.35L7.85625 17.03C3.35 12.36 0.375 9.28 0.375 5.5C0.375 2.42 2.4925 0 5.1875 0C6.71 0 8.17125 0.81 9.125 2.09C10.0787 0.81 11.54 0 13.0625 0C15.7575 0 17.875 2.42 17.875 5.5C17.875 9.28 14.9 12.36 10.3938 17.04L9.125 18.35Z" fill="black"/>
-   </svg>`
-  
-  
-   
+likeBloc.innerHTML = `${totalLikes}`
+heartBloc.innerHTML = `<svg width="17" height="18" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.125 18.35L7.85625 17.03C3.35 12.36 0.375 9.28 0.375 5.5C0.375 2.42 2.4925 0 5.1875 0C6.71 0 8.17125 0.81 9.125 2.09C10.0787 0.81 11.54 0 13.0625 0C15.7575 0 17.875 2.42 17.875 5.5C17.875 9.28 14.9 12.36 10.3938 17.04L9.125 18.35Z" fill="black"/>
+</svg>`
+
 })();
-
-
-
-
 
 async function displayData(photographer) {
     const photographerheader = document.querySelector(".photograph-header");
@@ -85,47 +82,21 @@ async function displayData(photographer) {
 };
 
 
-async function DisplayMedia(photographerMedia) {  
+async function DisplayMedia(photographerMedia,medias = []) {  
     const photographerBook = document.querySelector(".photographer-book");
-    const photographerBookModel = PhotographerMediaFactory(photographerMedia);
+    const photographerBookModel = PhotographerMediaFactory(photographerMedia, medias);
     const UserCard = photographerBookModel.photographerBookDOM();
     photographerBook.appendChild(UserCard);
 } 
 
- 
-
+async function lightBoxUse(photographerMedia) {
+    const lightbox = document.querySelector('.lightbox');
+    const lightBoxNext = document.querySelector('.lightbox__previous');
+    const lightBoxPrevious = document.querySelector('.lightbox__next');
     
+}
 
 
-
-
-/*class Lightbox {
-     static  initiat() {
-        
-        console.log(arr)
-        imgs.forEach(imgs => imgs.addEventListener('click',e => {
-            e.preventDefault();
-            new Lightbox(e.currentTarget.getAttribute('src'))
-        }))
-    };
-
-  /*constructor(url) {
-    const element = this.builDOM(url)
-    document.body.appendChild(element)
-  }
-
-  builDOM(url) {
-    const dom = document.createElement('div')
-    div.classList.add('lightbox')
-    dom.innerHTML = `
-    <div class="lightbox">
-    <button class="lightbox__close">Fermer</button>
-    <button class="lightbox__previous">Précédent</button>
-    <button class="lightbox__next">Suivant</button>
-    <div class="lightbox__container"><img src="${url}" alt=""></div>
-    </div>`
-  }
-}*/
 
 
 

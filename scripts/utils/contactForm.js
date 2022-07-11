@@ -3,7 +3,7 @@ function displayModal(e) {
     const closeButton = document.getElementById('close_button');
     const modal = document.getElementById("contact_modal");
     const main = document.getElementById("main");
-    
+    const inputs = document.getElementsByTagName(['input']);
     modal.style.display = "block";
     main.style.opacity = "0.2";
     
@@ -16,10 +16,17 @@ function displayModal(e) {
     modal.setAttribute('aria-modal', 'true');
     closeButton.setAttribute('tabindex', '1');
     main.setAttribute('aria-hidden', 'true');
+    main.setAttribute("tabindex", "-1");
+    console.log(inputs)
 } 
 
 
-function catchFocusModal() {}
+function catchFocusModal(){
+    const closeButton = document.getElementById('close_button');
+    const modal = document.getElementById("contact_modal");
+    const main = document.getElementById("main");
+    main.style.tabindex = "-10";
+}
 
     
 
@@ -36,7 +43,7 @@ function closeModal(e) {
 }
 
 const form = document.getElementsByTagName("form");
-console.log(form)
+
 form.addEventListener('submit', e => {
     e.preventDefault();
 });
