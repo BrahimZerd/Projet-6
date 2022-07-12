@@ -52,12 +52,14 @@
             span.innerHTML = i;
             totaLikes.innerHTML++;
         })
+        const buttonPrevious = document.createElement('button');
+        
         img.addEventListener('click', function(){
             console.log(medias)
             const dom = document.createElement('div')
             const main = document.getElementById('main');
             const buttonClose = document.createElement('button');
-            const buttonPrevious = document.createElement('button');
+            
             const buttonNext = document.createElement('button');
             const container = document.createElement('div');
             const image_lightbox = document.createElement('img');
@@ -71,9 +73,11 @@
             dom.appendChild(buttonNext);
             dom.appendChild(container);
             container.appendChild(image_lightbox);
+            
             image_lightbox.setAttribute('src',`${picture}`);
             image_lightbox.setAttribute('alt',"");
             buttonClose.setAttribute('onclick','closeLightbox()');
+            buttonPrevious.onclick = previousPicture(`${medias}`);
             
             main.setAttribute('aria-hidden', 'true');
             dom.setAttribute('aria-hidden', 'false');
@@ -113,10 +117,11 @@ function closeLightbox() {
     
 }
 
+        function previousPicture(medias){
+            console.log(medias)
+        }
 function nextPicture() {}
-function previousPicture(medias){
-    console.log(medias);
-}
+
 
 
 
