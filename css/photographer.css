@@ -118,6 +118,7 @@ form input {
     z-index: 11;
     cursor: pointer;
     text-indent: -5000px;
+    
 }
 
 .lightbox__previous{
@@ -139,6 +140,7 @@ form input {
     cursor: pointer;
     text-indent: -5000px;
     color: #901C1C;
+    
 }
 .lightbox__container{
     display: flex;

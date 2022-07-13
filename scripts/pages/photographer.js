@@ -45,6 +45,7 @@ function getPhotographersId() {
 
         //dépôt des données selon l'id du photograph
         displayData(photographer)
+        
     };
     
 })
@@ -60,7 +61,8 @@ function getPhotographersId() {
     DisplayMedia(photographerMedias, photographerMedia);
     mediaLikesTable.push(photographerMedias.likes);
     totalLikes += photographerMedias.likes
-    console.log(photographerMedia)
+    
+    lightBoxUse(photographerMedias, photographerMedia);
     
 })
 
@@ -87,14 +89,28 @@ async function DisplayMedia(photographerMedia,medias = []) {
     const photographerBookModel = PhotographerMediaFactory(photographerMedia, medias);
     const UserCard = photographerBookModel.photographerBookDOM();
     photographerBook.appendChild(UserCard);
+    const lightBoxNext = document.querySelector('.lightbox__previous');
+
+    
 } 
 
-async function lightBoxUse(photographerMedia) {
+  async function lightBoxUse(photographerMedia, medias = []) {
+    
     const lightbox = document.querySelector('.lightbox');
     const lightBoxNext = document.querySelector('.lightbox__previous');
     const lightBoxPrevious = document.querySelector('.lightbox__next');
+    console.log(medias)
+
+  
     
 }
+const lightBoxNext = document.querySelector('.lightbox__previous');
+
+await DisplayMedia.lightBoxNext.addEventListener('click', function(){
+    console.log("bonjour")
+}) 
+
+
 
 
 

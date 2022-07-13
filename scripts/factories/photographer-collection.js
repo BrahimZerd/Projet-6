@@ -42,6 +42,7 @@
             h2.setAttribute("aria-label","name of the video");
             
         }
+        //intégration likes au clic
         article.appendChild(bloc);
         bloc.appendChild(h2);
         bloc.appendChild(span);
@@ -52,14 +53,12 @@
             span.innerHTML = i;
             totaLikes.innerHTML++;
         })
-        const buttonPrevious = document.createElement('button');
-        
         img.addEventListener('click', function(){
-            console.log(medias)
+            
             const dom = document.createElement('div')
             const main = document.getElementById('main');
             const buttonClose = document.createElement('button');
-            
+            const buttonPrevious = document.createElement('button');
             const buttonNext = document.createElement('button');
             const container = document.createElement('div');
             const image_lightbox = document.createElement('img');
@@ -77,7 +76,7 @@
             image_lightbox.setAttribute('src',`${picture}`);
             image_lightbox.setAttribute('alt',"");
             buttonClose.setAttribute('onclick','closeLightbox()');
-            buttonPrevious.onclick = previousPicture(`${medias}`);
+            
             
             main.setAttribute('aria-hidden', 'true');
             dom.setAttribute('aria-hidden', 'false');
@@ -85,7 +84,7 @@
             dom.setAttribute('aria-label','box focus of the selected picture');
             dom.classList.add('lightbox');
             
-        })
+        });
         vid.addEventListener('click', function(){
             const dom = document.createElement('div')
             const main = document.getElementById('main');
@@ -109,6 +108,7 @@
     return {id, photographerId,name, title,video, image, likes, price, date, photographerBookDOM }
 }
 
+        
 function closeLightbox() {
     const main = document.getElementById('main');
     
@@ -116,17 +116,27 @@ function closeLightbox() {
     main.removeChild(lightBox);
     
 }
-
-        function previousPicture(medias){
-            console.log(medias)
-        }
 function nextPicture() {}
 
 
+/*async function getPhotographersMedias() {
+    return fetch(`./data/photographers.json`)
+        .then((response) =>
+           response.json()
+        )
+        .catch(function(){
+            console.log("Something not happened well")
+        })
+}
 
-
-
-
+(async function() {
+const medias = await getPhotographersMedias()
+const photographerMedia = medias.media.filter(media => media.photographerId == id);
+console.log(photographerMedia)
+function getPhotographersId() {
+    return new URL(location.href).searchParams.get("id")
+}
+})()*/
 
             
     
