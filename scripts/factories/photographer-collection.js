@@ -1,6 +1,6 @@
     function PhotographerMediaFactory(data,medias) {
         
-    const { id, photographerId,name, title, image,video, likes, price, date } = data;
+        let {id, photographerId, name, title, image,video, likes, price, date} = data;
     
         function photographerBookDOM() {
         const heart = `assets/icons/heart.svg`;
@@ -62,6 +62,8 @@
             const buttonNext = document.createElement('button');
             const container = document.createElement('div');
             const image_lightbox = document.createElement('img');
+            image_lightbox.setAttribute('id','image_modifier')
+            container.setAttribute('id','lightbox__container');
             container.classList.add('lightbox__container');
             buttonClose.classList.add('lightbox__close');
 	        buttonPrevious.classList.add('lightbox__previous');
@@ -76,7 +78,12 @@
             image_lightbox.setAttribute('src',`${picture}`);
             image_lightbox.setAttribute('alt',"");
             buttonClose.setAttribute('onclick','closeLightbox()');
-            
+            buttonNext.addEventListener('click', function() {
+                nextPicture(image);
+            })
+            buttonPrevious.addEventListener('click', function() {
+                previousPicture(image);
+            })            
             
             main.setAttribute('aria-hidden', 'true');
             dom.setAttribute('aria-hidden', 'false');
@@ -99,24 +106,100 @@
             <button class="lightbox__close"  onClick="closeLightbox()" aria-label="close the lightbox">Fermer</button>
             <button class="lightbox__previous" onClick ="previousPicture("${medias}")" aria-label="go to the previous video">Précédent</button>
             <button class="lightbox__next" onClick="nextPicture("${medias}")" aria-label="go to the next video">Suivant</button>
-            <div class="lightbox__container"><video controls="" aria-label="focus of the selected video"><source type="video/mp4"
+            <div id="lightbox__container" class="lightbox__container"><video id = "video__id"controls="" aria-label="focus of the selected video"><source type="video/mp4"
             src="${movie}"></video</div>`
         })
         
     return (article);
-    }
-    return {id, photographerId,name, title,video, image, likes, price, date, photographerBookDOM }
+        }
+
+        function nextPicture() {
+            const values = medias.map(object => object.image)
+            const index = values.indexOf(image)
+            
+           const modifier = document.getElementById('image_modifier')
+           if(index !== -1) {
+           modifier.style.display = "block";
+           modifier.setAttribute('src',`Sample Photos/${photographerId}/${medias[index+1].image}`)
+           image = medias[index+1].image
+           if(typeof image === 'undefined') {
+            modifier.style.display = "none"
+            const video_lightbox = document.createElement('video');
+            const source_lightbox = document.createElement('source');
+            const container = document.getElementById('lightbox__container');
+            container.appendChild(video_lightbox);
+            video_lightbox.setAttribute('controls','""');
+            video_lightbox.setAttribute('id','video__lightbox');
+            video_lightbox.setAttribute('aria_label','focus of the selected video');
+            video_lightbox.appendChild(source_lightbox);
+            source_lightbox.setAttribute('type','video/mp4');
+            source_lightbox.setAttribute('src', `Sample Photos/${photographerId}/${medias[index+1].video}`);
+        }
+           if(typeof image !== 'undefined'){
+            const video_lightbox = document.getElementById('video__lightbox');
+            video_lightbox.remove();
+
+        }
+        }
+        }
+        function previousPicture(){
+            
+            const modifier = document.getElementById('image_modifier')
+        
+            const values = medias.map(object => object.image)
+            const index = values.indexOf(image)
+        
+           
+        if(index !== -1) {
+           modifier.style.display = "block";
+        
+           modifier.setAttribute('src',`Sample Photos/${photographerId}/${medias[index-1].image}`)
+           image = medias[index-1].image
+        if(typeof image === 'undefined') {
+            modifier.style.display = "none"
+            const video_lightbox = document.createElement('video');
+            const source_lightbox = document.createElement('source');
+            const container = document.getElementById('lightbox__container');
+            container.appendChild(video_lightbox);
+            video_lightbox.setAttribute('controls','""');
+            video_lightbox.setAttribute('id','video__lightbox');
+            video_lightbox.setAttribute('aria_label','focus of the selected video');
+            video_lightbox.appendChild(source_lightbox);
+            source_lightbox.setAttribute('type','video/mp4');
+            source_lightbox.setAttribute('src', `Sample Photos/${photographerId}/${medias[index-1].video}`);
+        }
+        if(typeof image !== 'undefined'){
+            const video_lightbox = document.getElementById('video__lightbox');
+            video_lightbox.remove();
+
+        }
+           }
+        
+        
+        }
+           
+            
+                
+        
+            
+            
+            
+
+            
+        
+            
+            
+        
+        return {id, photographerId,name, title,video, image, likes, price, date, photographerBookDOM }
 }
 
         
 function closeLightbox() {
     const main = document.getElementById('main');
-    
     const lightBox = document.getElementById('lightbox');
     main.removeChild(lightBox);
-    
 }
-function nextPicture() {}
+
 
 
 /*async function getPhotographersMedias() {

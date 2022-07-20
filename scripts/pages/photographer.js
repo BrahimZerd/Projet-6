@@ -46,6 +46,7 @@ function getPhotographersId() {
         //dépôt des données selon l'id du photograph
         displayData(photographer)
         
+        
     };
     
 })
@@ -54,15 +55,15 @@ function getPhotographersId() {
     const photographerMedia = photographer.media.filter(media => media.photographerId == id);
     let mediaLikesTable = [];
     let totalLikes = 0;
-    
-    
+    //récupération du tableau sur la page du photographe
+    sortMedias(photographerMedia)
 
     photographerMedia.forEach((photographerMedias) => {
     DisplayMedia(photographerMedias, photographerMedia);
+    
     mediaLikesTable.push(photographerMedias.likes);
     totalLikes += photographerMedias.likes
     
-    lightBoxUse(photographerMedias, photographerMedia);
     
 })
 
@@ -83,32 +84,63 @@ async function displayData(photographer) {
     
 };
 
-
 async function DisplayMedia(photographerMedia,medias = []) {  
     const photographerBook = document.querySelector(".photographer-book");
     const photographerBookModel = PhotographerMediaFactory(photographerMedia, medias);
     const UserCard = photographerBookModel.photographerBookDOM();
     photographerBook.appendChild(UserCard);
-    const lightBoxNext = document.querySelector('.lightbox__previous');
-
-    
 } 
 
-  async function lightBoxUse(photographerMedia, medias = []) {
-    
-    const lightbox = document.querySelector('.lightbox');
-    const lightBoxNext = document.querySelector('.lightbox__previous');
-    const lightBoxPrevious = document.querySelector('.lightbox__next');
-    console.log(medias)
-
-  
-    
-}
-const lightBoxNext = document.querySelector('.lightbox__previous');
-
-await DisplayMedia.lightBoxNext.addEventListener('click', function(){
-    console.log("bonjour")
-}) 
+//triage des données
+function sortMedias(photographerMedia) {
+const titre = document.getElementById('titre')
+const popular = document.getElementById('popularite');
+const date = document.getElementById('date');
+titre.addEventListener('click',function(){
+    photographerMedia.sort(function (a, b) {
+        if (a.title < b.title) {
+          return -1;
+        } else {
+          return 1;
+        };
+    })
+    const photographerBook = document.querySelector(".photographer-book");
+    photographerBook.innerHTML= "";
+    photographerMedia.forEach((photographerMedias) => {
+        DisplayMedia(photographerMedias);
+    });
+})
+popular.addEventListener('click',function() {
+    photographerMedia.sort(function(a,b){
+        if(a.likes > b.likes) {
+            return -1;
+        } else {
+            return 1;
+        };
+        
+    })
+    const photographerBook = document.querySelector(".photographer-book");
+    photographerBook.innerHTML= "";
+    photographerMedia.forEach((photographerMedias) => {
+        DisplayMedia(photographerMedias);
+        
+    });
+})
+date.addEventListener('click',function(){
+    photographerMedia.sort(function(a,b){
+        if(a.date < b.date) {
+            return -1;
+        } else {
+            return 1;
+        };
+        
+    })
+    const photographerBook = document.querySelector(".photographer-book");
+    photographerBook.innerHTML= "";
+    photographerMedia.forEach((photographerMedias) => {
+        DisplayMedia(photographerMedias);
+    });
+})};
 
 
 
