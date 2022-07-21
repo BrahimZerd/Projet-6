@@ -6,10 +6,10 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
-    <script src="scripts/factories/photographer-header.js" defer></script>
-    <script src="/scripts/utils/contactForm.js" defer ></script>
-    <script src="scripts/factories/photographer-collection.js" defer ></script>
-    <script src="scripts/pages/photographer.js" defer ></script>
+    <script src="scripts/factories/photographer-header.js" type="text/javascript" defer></script>
+    <script src="/scripts/utils/contactForm.js" type="text/javascript" defer ></script>
+    <script src="scripts/factories/photographer-collection.js" type="text/javascript" defer ></script>
+    <script src="scripts/pages/photographer.js" type="text/javascript" defer ></script>
   </head>
   <body>
     <header>
@@ -27,11 +27,11 @@
       
     <nav>
     <div class="listbox-area">
-        <span id="sort_medias" class="listbox_label">Trier par</label>
-        <span class="custom-arrow"></span>
+        <span id="sort_medias" class="listbox_label">Trier par</span>
+        
         <div class="ensemble__button__wrapper">
           <button type="button" aria-haspopup="listbox" aria-labelledby="sort_medias sort_button" id="sort_button">Popularité</button>
-        <ul id="list_options" role="listbox" aria-labelledby="sort_medias" class="hidden">
+        <ul id="list_options" role="listbox" aria-labelledby="sort_medias">
           <li id="popularite" role="option">Popularité</li>
           <li id="date" role="option">Date</li>
           <li id="titre" role ="option">Titre</li>

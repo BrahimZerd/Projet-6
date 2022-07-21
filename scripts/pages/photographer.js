@@ -142,6 +142,36 @@ date.addEventListener('click',function(){
     });
 })};
 
+const sortBox = document.getElementById('sort_button');
+const sortFull = document.getElementById('list_options');
+const popularity = document.getElementById('popularite');
+const date = document.getElementById('date');
+const titre = document.getElementById('titre');
+sortBox.addEventListener('click', function(){
+    sortFull.style.display = 'block';
+})
+
+sortFull.addEventListener('click', function(){
+    sortFull.style.display = "none";
+})
+titre.addEventListener('click', function() {
+    sortBox.textContent = 'Titre';
+    sortBox.removeAttribute('aria-expanded')
+});
+popularity.addEventListener('click', function() {
+    sortBox.textContent = 'Popularité';
+    sortBox.removeAttribute('aria-expanded')
+})
+date.addEventListener('click', function() {
+    sortBox.textContent = "Date";
+    sortBox.removeAttribute('aria-expanded')
+})
+
+sortBox.addEventListener('click',function(){
+    sortBox.setAttribute('aria-expanded',"true")
+})
+
+
 
 
 

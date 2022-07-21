@@ -233,21 +233,24 @@ li {
     position: relative;
     border: none;
     padding: 5px 10px;
-    
+    height: 40px;
     width: 121px;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px;
     text-align: left;
     background-color: #901C1C;
+    opacity: 1;
     color: #ffff;
-    font-weight: 600;
+    font-weight: bolder;
     font-size: 17.3px;
     width: 164px;
+    top: 27px;
+    
     
   }
   
   button[aria-haspopup="listbox"]::after {
     position: absolute;
-    
+    z-index: 1;
     left: 85%;
     top: 45%;
     bottom: 1.92%;
@@ -262,18 +265,18 @@ li {
   
   button[aria-haspopup="listbox"][aria-expanded="true"]::after {
     position: absolute;
-    right: -25%;
-    left: 95%;
-    top: 64,1%;
-    bottom: 4,92%;
-    
-    transform: rotate(150deg);
+   
+    left: 85%;
+    top: 45%;
+    bottom:1.92%;
+    transform: rotate(-315deg);
     border-bottom: solid 3px #fff;
     border-right: solid 3px #fff;
     content: "";
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
   }
+  
   
   button[aria-haspopup="listbox"] + [role="listbox"] {
     position: absolute;
@@ -284,8 +287,7 @@ li {
     border-top: 0;
     overflow-y: hidden;
     border-radius: 0px 0px 5px 5px;
-
-  }
+}
 
   [role="listbox"]#ss_elem_list {
     position: relative;
@@ -299,11 +301,16 @@ li {
     
   }
 
-  .hidden {
+  #list_options {
     display: none;
   }
 
   ul {
-    
     background-color: #901C1C;
+  }
+  #sort_medias {
+    display: block;
+    position: absolute;
+    top: 465px;
+
   }
