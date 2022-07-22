@@ -157,14 +157,23 @@ sortFull.addEventListener('click', function(){
 titre.addEventListener('click', function() {
     sortBox.textContent = 'Titre';
     sortBox.removeAttribute('aria-expanded')
+    titre.setAttribute('aria-selected', 'true');
+    date.removeAttribute('aria-selected');
+    popularity.removeAttribute('aria-selected');
 });
 popularity.addEventListener('click', function() {
     sortBox.textContent = 'Popularité';
     sortBox.removeAttribute('aria-expanded')
+    popularity.setAttribute('aria-selected', 'true');
+    date.removeAttribute('aria-selected');
+    titre.removeAttribute('aria-selected');
 })
 date.addEventListener('click', function() {
     sortBox.textContent = "Date";
-    sortBox.removeAttribute('aria-expanded')
+    sortBox.removeAttribute('aria-expanded');
+    date.setAttribute('aria-selected', 'true');
+    titre.removeAttribute('aria-selected');
+    popularity.removeAttribute('aria-selected');
 })
 
 sortBox.addEventListener('click',function(){
@@ -172,7 +181,8 @@ sortBox.addEventListener('click',function(){
 })
 
 
-
+const sortFocus = document.getElementById('list_options');
+sortFocus.setAttribute('tabindex','-1');                    
 
 
 

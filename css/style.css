@@ -293,6 +293,7 @@ li {
     position: relative;
     max-height: 18em;
     overflow-y: auto;
+    
   }
   
   [role="listbox"] + *,
@@ -312,5 +313,13 @@ li {
     display: block;
     position: absolute;
     top: 465px;
+}
 
-  }
+.lightbox span {
+    font-size: 24px;
+    margin-left: 5.3vw;
+    line-height: 50px;
+    color: #901C1C;
+    font-size: 400;
+    
+}

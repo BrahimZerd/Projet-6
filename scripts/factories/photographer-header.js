@@ -14,6 +14,7 @@ function photographerFactory(data) {
         const h2 = document.createElement('h2');
         const p = document.createElement('p');
         h1.innerHTML = name;
+        img.setAttribute('aria-label',name);
         h2.innerHTML = `${city}, ${country}`
         p.innerHTML = tagline;
         article.appendChild(button);
