@@ -99,8 +99,6 @@ form.addEventListener('submit', function(e) {
     e.preventDefault();
 });
 
-const modal = document.getElementById("contact_modal");
-
 
 
 

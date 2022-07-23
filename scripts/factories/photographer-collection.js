@@ -17,14 +17,18 @@
         
         
         
+        
         bloc.setAttribute("id","title_likes")
         img.alt="";
         img.setAttribute("src", picture);
         img.setAttribute("id","photographer-bloc");
+        img.setAttribute('tabindex','0');
+        span.setAttribute('tabindex',"0");
         svg.setAttribute("data",heart);
         article.setAttribute("aria-labelledby","photographer-bloc")
         h2.setAttribute("id","photographer-bloc");
         span.style.cursor = "pointer";
+        span.style.display = "block";
         
         h2.innerHTML = `${title}`;
         span.innerHTML = `${likes}`;
@@ -69,10 +73,12 @@
             dom.setAttribute('role', 'dialog');
             image_lightbox.setAttribute('id','image_modifier')
             container.setAttribute('id','lightbox__container');
+
             container.classList.add('lightbox__container');
             buttonClose.classList.add('lightbox__close');
-	        buttonPrevious.classList.add('lightbox__previous');
+            buttonPrevious.classList.add('lightbox__previous');
             buttonNext.classList.add('lightbox__next');
+
             titlePicture.setAttribute('id', 'pictureLightboxName')
             image_lightbox.setAttribute('src',`${picture}`);
             image_lightbox.setAttribute('alt',`${title}`);
@@ -97,6 +103,7 @@
             buttonNext.addEventListener('click', function() {
                 nextPicture(image);
             })
+            
             buttonPrevious.addEventListener('click', function() {
                 previousPicture(image);
             })            
@@ -215,7 +222,7 @@ function closeLightbox() {
 }
 
             
-    
+   
 
 
       

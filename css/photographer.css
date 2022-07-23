@@ -166,4 +166,10 @@ form input {
     position: absolute;
     left: 90px;
 }
+button:hover{
+    background-color:  #DB8876;
+  }
+  button:focus{
+    background-color: #DB8876;
+  }
 

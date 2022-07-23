@@ -47,7 +47,7 @@ function getPhotographersId() {
         displayData(photographer)
         
         
-    };
+    }
     
 })
 
@@ -82,7 +82,7 @@ async function displayData(photographer) {
     const userCardDOM = photographerModel.photographHeaderDOM();
     photographerheader.appendChild(userCardDOM);
     
-};
+}
 
 async function DisplayMedia(photographerMedia,medias = []) {  
     const photographerBook = document.querySelector(".photographer-book");
@@ -102,7 +102,7 @@ titre.addEventListener('click',function(){
           return -1;
         } else {
           return 1;
-        };
+        }
     })
     const photographerBook = document.querySelector(".photographer-book");
     photographerBook.innerHTML= "";
@@ -116,7 +116,7 @@ popular.addEventListener('click',function() {
             return -1;
         } else {
             return 1;
-        };
+        }
         
     })
     const photographerBook = document.querySelector(".photographer-book");
@@ -132,7 +132,7 @@ date.addEventListener('click',function(){
             return -1;
         } else {
             return 1;
-        };
+        }
         
     })
     const photographerBook = document.querySelector(".photographer-book");
@@ -140,15 +140,18 @@ date.addEventListener('click',function(){
     photographerMedia.forEach((photographerMedias) => {
         DisplayMedia(photographerMedias);
     });
-})};
+})}
 
-const sortBox = document.getElementById('sort_button');
-const sortFull = document.getElementById('list_options');
-const popularity = document.getElementById('popularite');
-const date = document.getElementById('date');
-const titre = document.getElementById('titre');
+    const sortBox = document.getElementById('sort_button');
+    const sortFull = document.getElementById('list_options');
+    const popularity = document.getElementById('popularite');
+    const date = document.getElementById('date');
+    const titre = document.getElementById('titre');
+    
+    
 sortBox.addEventListener('click', function(){
     sortFull.style.display = 'block';
+    
 })
 
 sortFull.addEventListener('click', function(){
@@ -176,13 +179,22 @@ date.addEventListener('click', function() {
     popularity.removeAttribute('aria-selected');
 })
 
-sortBox.addEventListener('click',function(){
+sortBox.addEventListener('click',function(e){
     sortBox.setAttribute('aria-expanded',"true")
-})
+});
 
+window.addEventListener('keypress', function(event) {
+    if (event.keyCode === 13) {
+    document.activeElement.click();
+    event.preventDefault()
+      
+    }})
+window.addEventListener('click',function(){
+    document.activeElement.focus();
+})    
 
-const sortFocus = document.getElementById('list_options');
-sortFocus.setAttribute('tabindex','-1');                    
+                                           
+                   
 
 
 

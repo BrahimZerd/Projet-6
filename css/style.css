@@ -243,9 +243,17 @@ li {
     font-weight: bolder;
     font-size: 17.3px;
     width: 164px;
-    top: 27px;
+    top: 39px;
     
     
+  }
+  button:hover{
+    background-color:  #DB8876;
+    color: black;
+  }
+  button:focus{
+    background-color: #DB8876;
+    color: black;
   }
   
   button[aria-haspopup="listbox"]::after {
@@ -267,7 +275,7 @@ li {
     position: absolute;
    
     left: 85%;
-    top: 45%;
+    top: 30%;
     bottom:1.92%;
     transform: rotate(-315deg);
     border-bottom: solid 3px #fff;
@@ -308,6 +316,7 @@ li {
 
   ul {
     background-color: #901C1C;
+    
   }
   #sort_medias {
     display: block;
@@ -323,3 +332,6 @@ li {
     font-size: 400;
     
 }
+li:hover {
+    color: black;
+    }
