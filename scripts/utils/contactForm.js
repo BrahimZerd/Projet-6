@@ -12,6 +12,8 @@ function displayModal() {
     
     modal.style.display = "block";
     main.style.opacity = "0.2";
+    main.style.display = "none";
+    header.style.display = "none";
     
     //désactivation du scrolling
     window.onscroll = function() {
@@ -87,6 +89,8 @@ function closeModal() {
     modal.style.display = "none";
     main.style.opacity = "1";
     header.style.opacity = "1";
+    
+    main.style.display = "block";
     header.removeAttribute('aria-disabled');
     //arrêt du scrolling
     window.onscroll = function() {};

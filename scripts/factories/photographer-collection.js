@@ -62,13 +62,14 @@
             //ouverture et création bloc lightbox à l'ouverture de celle ci
             const dom = document.createElement('div')
             const main = document.getElementById('main');
+            const header = document.querySelector('header');
             const buttonClose = document.createElement('button');
             const buttonPrevious = document.createElement('button');
             const buttonNext = document.createElement('button');
             const container = document.createElement('div');
             const image_lightbox = document.createElement('img');
             const titlePicture = document.createElement('span');
-
+            main.style.display ="none";
             dom.setAttribute('aria-expanded', 'true');
             dom.setAttribute('role', 'dialog');
             image_lightbox.setAttribute('id','image_modifier')
@@ -89,7 +90,8 @@
             dom.setAttribute('aria-label','box focus of the selected picture');
             dom.classList.add('lightbox');
 
-            main.appendChild(dom);
+            main.parentNode.appendChild(dom);
+            header.style.display ="none";
             dom.appendChild(buttonClose);
             dom.appendChild(buttonPrevious);
             dom.appendChild(buttonNext);
@@ -122,8 +124,11 @@
             const buttonNext = document.createElement('button');
             const dom = document.createElement('div')
             const main = document.getElementById('main');
+            const header = document.querySelector('header');
 
-            main.appendChild(dom);
+            main.parentNode.appendChild(dom);
+            header.style.display = "none";
+            main.style.display ="none";
             main.setAttribute('aria-hidden', 'true');
             dom.setAttribute('aria-hidden', 'false');
             dom.setAttribute('id','lightbox');
@@ -217,8 +222,11 @@
 function closeLightbox() {
     //fonction fermeture de la lightbox
     const main = document.getElementById('main');
+    const header = document.querySelector('header');
     const lightBox = document.getElementById('lightbox');
-    main.removeChild(lightBox);
+    main.parentNode.removeChild(lightBox);
+    main.style.display = "block";
+    header.style.display = "block";
 }
 
             
