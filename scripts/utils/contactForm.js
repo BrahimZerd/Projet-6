@@ -15,11 +15,6 @@ function displayModal() {
     main.style.display = "none";
     header.style.display = "none";
     
-    //désactivation du scrolling
-    window.onscroll = function() {
-    window.scrollTo(window.pageYOffset, window.pageXOffset);
-    };
-   
     modal.removeAttribute('aria-hidden');
     modal.setAttribute('aria-modal', 'true');
     closeButton.setAttribute("tabindex","1");
@@ -98,11 +93,34 @@ function closeModal() {
     modal.removeAttribute('aria-modal'); 
 }
 
-const form = document.getElementsByTagName("form");
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-});
 
+
+
+            
+    const form = document.getElementById('formId')
+    const firstName = document.getElementById('first_name');
+    const lastName = document.getElementById('last_name');
+    const email = document.getElementById('email');
+    const message = document.getElementById('message');
+   
+   
+    form.addEventListener("submit", (e) => {
+        const modal = document.getElementById("contact_modal");
+        const main = document.getElementById('main')
+        e.preventDefault();
+        // console log des value et alert envoye si ok 
+        alert("Formulaire envoyé");
+        console.log("Prénom = " + firstName.value);
+        console.log("Nom = "+ lastName.value);
+        console.log("Email = " + email.value);
+        console.log("Message : " + message.value);
+        modal.style.display = "none";
+        main.style.display = "block";
+        main.style.opacity = "1";
+        
+        
+        
+      });
 
 
 

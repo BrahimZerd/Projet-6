@@ -6,20 +6,20 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
-    <script src="scripts/factories/photographer-header.js" type="text/javascript" defer></script>
-    <script src="/scripts/utils/contactForm.js" type="text/javascript" defer ></script>
-    <script src="scripts/factories/photographer-collection.js" type="text/javascript" defer ></script>
-    <script src="scripts/pages/photographer.js" type="text/javascript" defer ></script>
+    <script src="scripts/factories/photographer-header.js"  defer></script>
+    <script src="/scripts/utils/contactForm.js"  defer ></script>
+    <script src="scripts/factories/photographer-collection.js" defer ></script>
+    <script src="scripts/pages/photographer.js" defer ></script>
   </head>
   <body>
     <header>
       <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" aria-label ="link to home page" alt = ""/>
+        <img src="assets/images/logo.png" class="logo" aria-label ="link to home page" alt = "logo to home page"/>
       </a>
     </header>
     <main id="main">
       <div class="photograph-header" id="photograph-header">
-        <div class="photographer-informations" id="photographer-informations" aria-label="photographer informations">
+        <div class="photographer-informations" id="photographer-informations" >
           
         </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
@@ -32,16 +32,16 @@
         <div class="ensemble__button__wrapper">
           <button type="button" aria-haspopup="listbox" aria-labelledby="sort_medias sort_button" id="sort_button">Popularité</button>
         <ul id="list_options" role="listbox" aria-labelledby="sort_medias" tabindex="-1">
-          <li id="popularite" role="option" aria-activedescendant="popularite"  tabindex="1">Popularité</li>
-          <li id="date" role="option" aria-activedescendant="date"  tabindex="1">Date</li>
-          <li id="titre" role ="option" aria-activedescendant="titre"  tabindex="1">Titre</li>
+          <li id="popularite" role="option" tabindex="0">Popularité</li>
+          <li id="date" role="option" tabindex="0">Date</li>
+          <li id="titre" role ="option" tabindex="0">Titre</li>
         </ul>
       </div>
     </div>
           
     </nav>
       <div class="photographer-book" id="photographer-book"></div>
-    
+      
     </main>
     <div id="contact_modal" role = "dialog" aria-hidden="true" aria-describedby="modalTitle">
 			<div class="modal" >
@@ -49,7 +49,7 @@
           <h2 id="modalTitle">Contactez-moi</h2>
           <img id ="close_button" src="assets/icons/close.svg" alt="close_button" onclick="closeModal()" />
         </header>
-				<form>
+				<form method="get" id = "formId">
 					<div>
 						<label for="first_name" aria-label ="first_name">Prénom</label>
 						<input type="text" name="first_name" id="first_name" aria-labelledby="first_name" required />
@@ -58,7 +58,7 @@
             <label for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="Email Address" aria-labelledby="email" aria-describedby="email" required />
             <label for="message">Votre message</label>
-            <textarea name ="message" id="message" aria-labelledby="message" aria-describedby="message" placeholder ="write your message here"></textarea>
+            <textarea name ="message" id="message" aria-labelledby="message" aria-describedby="message" placeholder ="write your message here" required></textarea>
 					</div>
           <button class="contact_button" type="submit">Envoyer</button>
 				</form>

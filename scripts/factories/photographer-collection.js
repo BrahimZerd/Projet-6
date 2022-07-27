@@ -19,7 +19,7 @@
         
         
         bloc.setAttribute("id","title_likes")
-        img.alt="";
+        img.alt=`${title}`;
         img.setAttribute("src", picture);
         img.setAttribute("id","photographer-bloc");
         img.setAttribute('tabindex','0');
@@ -146,26 +146,31 @@
             src="${movie}"></video</div>`
         })
         
-    return (article);
+        return (article);
         }
 
         function nextPicture() {
             //tri du tableau médias au clic sur suivant, récupération du média suivant
             const values = medias.map(object => object.image)
-            const index = values.indexOf(image)
-            const modifier = document.getElementById('image_modifier')
             
-
-        if(index !== -1) {
+            let index = values.indexOf(image)
+            let videoindex = values.indexOf(video)
+            const modifier = document.getElementById('image_modifier')
+            if(index === medias.length-1) {
+                index = -1;
+            }
             const titlePicture = document.getElementById('pictureLightboxName');
            modifier.style.display = "block";
            modifier.setAttribute('src',`Sample Photos/${photographerId}/${medias[index+1].image}`)
+           modifier.setAttribute('alt', `${medias[index+1].title}` )
            image = medias[index+1].image
            titlePicture.innerHTML = medias[index+1].title;
             
-        if(typeof image === 'undefined') {
+         if( index + 1 == videoindex) {
             //si ce n'est pas une image dans le tableau créé un element du DOM video et y inclure le media
+            
             modifier.style.display = "none"
+            
             const video_lightbox = document.createElement('video');
             const source_lightbox = document.createElement('source');
             const container = document.getElementById('lightbox__container');
@@ -177,44 +182,53 @@
             video_lightbox.appendChild(source_lightbox);
             source_lightbox.setAttribute('type','video/mp4');
             source_lightbox.setAttribute('src', `Sample Photos/${photographerId}/${medias[index+1].video}`);
+            document.getElementById('video__lightbox').style.display = 'block';
             titlePicture.innerHTML = medias[index+1].title;
-        }
-           if(typeof image !== 'undefined'){
-            const video_lightbox = document.getElementById('video__lightbox');
-            video_lightbox.remove();
-        }}}
+        } else{
+            document.getElementById('video__lightbox').remove();
+        }}
 
         function previousPicture(){
-            const modifier = document.getElementById('image_modifier')
+            //tri du tableau médias au clic sur suivant, récupération du média suivant
             const values = medias.map(object => object.image)
-            const index = values.indexOf(image)
-        
+            
+            let index = values.indexOf(image)
+            let videoindex = values.indexOf(video)
+            const modifier = document.getElementById('image_modifier')
+            
            
-        if(index !== -1) {
             const titlePicture = document.getElementById('pictureLightboxName');
-            modifier.style.display = "block";
-            modifier.setAttribute('src',`Sample Photos/${photographerId}/${medias[index-1].image}`)
-            image = medias[index-1].image
-            titlePicture.innerHTML = medias[index-1].title;
-        if(typeof image === 'undefined') {
+           modifier.style.display = "block";
+           modifier.setAttribute('src',`Sample Photos/${photographerId}/${medias[index-1].image}`)
+           modifier.setAttribute('alt', `${medias[index-1].title}` )
+           image = medias[index-1].image
+           titlePicture.innerHTML = medias[index-1].title;
+           console.log(videoindex)
+           console.log(index-1)
+            
+         if( videoindex === index - 1) {
+            //si ce n'est pas une image dans le tableau créé un element du DOM video et y inclure le media
+            
             modifier.style.display = "none"
+            
             const video_lightbox = document.createElement('video');
             const source_lightbox = document.createElement('source');
             const container = document.getElementById('lightbox__container');
+            
             container.appendChild(video_lightbox);
             video_lightbox.setAttribute('controls','""');
             video_lightbox.setAttribute('id','video__lightbox');
             video_lightbox.setAttribute('aria_label','focus of the selected video');
             video_lightbox.appendChild(source_lightbox);
             source_lightbox.setAttribute('type','video/mp4');
-            source_lightbox.setAttribute('src', `Sample Photos/${photographerId}/${medias[index-1].video}`);
-        }
-        if(typeof image !== 'undefined'){
-            const video_lightbox = document.getElementById('video__lightbox');
-            video_lightbox.remove();
-
-        }
-    }}
+            source_lightbox.setAttribute('src', `Sample Photos/${photographerId}/${medias[videoindex].video}`);
+            document.getElementById('video__lightbox').style.display = 'block';
+            
+        } else{
+            document.getElementById('video__lightbox').remove();
+        }}
+           
+        
     return {id, photographerId,name, title,video, image, likes, price, date, photographerBookDOM }
 }
 
@@ -230,7 +244,7 @@ function closeLightbox() {
 }
 
             
-   
+
 
 
       

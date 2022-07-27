@@ -39,7 +39,9 @@ function getPhotographersId() {
         const div = document.createElement('div')
         modal.appendChild(div);
         div.innerHTML = photographer.name;
-
+        const form = document.getElementById('formId')
+        form.setAttribute('action', `${window.location}?photographer=${id}`)
+       
         // ajout du prix dans le bloc statique pour le prix / jour
         priceBloc.innerHTML = photographer.price + "€ / jour";
 
@@ -93,54 +95,59 @@ async function DisplayMedia(photographerMedia,medias = []) {
 
 //triage des données
 function sortMedias(photographerMedia) {
-const titre = document.getElementById('titre')
-const popular = document.getElementById('popularite');
-const date = document.getElementById('date');
-titre.addEventListener('click',function(){
-    photographerMedia.sort(function (a, b) {
-        if (a.title < b.title) {
-          return -1;
-        } else {
-          return 1;
-        }
+    const titre = document.getElementById('titre')
+    const popular = document.getElementById('popularite');
+    const date = document.getElementById('date');
+    titre.addEventListener('click',function(){
+        photographerMedia = photographerMedia.sort(function (a, b) {
+            if (a.title < b.title) {
+                return -1;
+            } else {
+                return 1;
+            }
+        });
+
+        const photographerBook = document.querySelector(".photographer-book");
+        photographerBook.innerHTML= "";
+        //DisplayMedia(photographerMedia);
+        photographerMedia.forEach((photographerMedias) => {
+            DisplayMedia(photographerMedias,photographerMedia);
+        });
     })
-    const photographerBook = document.querySelector(".photographer-book");
-    photographerBook.innerHTML= "";
-    photographerMedia.forEach((photographerMedias) => {
-        DisplayMedia(photographerMedias);
-    });
-})
-popular.addEventListener('click',function() {
-    photographerMedia.sort(function(a,b){
-        if(a.likes > b.likes) {
-            return -1;
-        } else {
-            return 1;
-        }
-        
+    popular.addEventListener('click',function() {
+        photographerMedia.sort(function(a,b){
+            if(a.likes > b.likes) {
+                return -1;
+            } else {
+                return 1;
+            }
+            
+        })
+        console.log(photographerMedia)
+        const photographerBook = document.querySelector(".photographer-book");
+        photographerBook.innerHTML= "";
+        photographerMedia.forEach((photographerMedias) => {
+            DisplayMedia(photographerMedias, photographerMedia);
+            
+        });
     })
-    const photographerBook = document.querySelector(".photographer-book");
-    photographerBook.innerHTML= "";
-    photographerMedia.forEach((photographerMedias) => {
-        DisplayMedia(photographerMedias);
-        
-    });
-})
-date.addEventListener('click',function(){
-    photographerMedia.sort(function(a,b){
-        if(a.date < b.date) {
-            return -1;
-        } else {
-            return 1;
-        }
-        
+    date.addEventListener('click',function(){
+        photographerMedia.sort(function(a,b){
+            if(a.date < b.date) {
+                return -1;
+            } else {
+                return 1;
+            }
+            
+        })
+        const photographerBook = document.querySelector(".photographer-book");
+        console.log(photographerMedia)
+        photographerBook.innerHTML= "";
+        photographerMedia.forEach((photographerMedias) => {
+            DisplayMedia(photographerMedias, photographerMedia);
+        });
     })
-    const photographerBook = document.querySelector(".photographer-book");
-    photographerBook.innerHTML= "";
-    photographerMedia.forEach((photographerMedias) => {
-        DisplayMedia(photographerMedias);
-    });
-})}
+}
 
     const sortBox = document.getElementById('sort_button');
     const sortFull = document.getElementById('list_options');
@@ -179,7 +186,7 @@ date.addEventListener('click', function() {
     popularity.removeAttribute('aria-selected');
 })
 
-sortBox.addEventListener('click',function(e){
+sortBox.addEventListener('click',function(){
     sortBox.setAttribute('aria-expanded',"true")
 });
 
@@ -191,15 +198,14 @@ window.addEventListener('keypress', function(event) {
     }})
 window.addEventListener('click',function(){
     document.activeElement.focus();
-})    
-
-                   
+}) 
 
 
 
 
 
-
+const lol = document.getElementById('.photographer-bloc')
+        console.log(lol)
 
 
 

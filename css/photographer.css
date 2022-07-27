@@ -2,9 +2,7 @@
     display: none;
     
 }
-*:focus {
-    border: solid 2px blue;
-}                                                                                                                               
+                                                                                                
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -38,7 +36,7 @@
     left: 385px;
     right: 385px;
     top: 0;
-    
+    margin-top: 50px;
     width: 669px;
     height: 85%;
 }
