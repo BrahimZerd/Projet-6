@@ -14,7 +14,6 @@ body {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    
 }
 
 
@@ -131,7 +130,7 @@ h1 {
 
 .contact_button {
     order: 2;
-    margin-right: 200px;
+    position: absolute;
 }
 .photograph-header h1 {
     color: #D3573C;
@@ -400,5 +399,14 @@ li {
     height: 800px;
     object-fit: cover;
     margin-top: 50px;
-    
+}
+
+.div__header {
+margin-right: 700px;
+}
+
+#formButton {
+position: absolute;
+bottom: 3%;
+left: 5%;
 }
