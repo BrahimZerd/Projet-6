@@ -198,14 +198,7 @@ window.addEventListener('keypress', function(event) {
     }})
 window.addEventListener('click',function(){
     document.activeElement.focus();
-}) 
-
-
-
-
-
-const lol = document.getElementById('.photographer-bloc')
-        console.log(lol)
+})
 
 
 
