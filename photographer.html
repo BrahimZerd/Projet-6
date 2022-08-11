@@ -52,7 +52,7 @@
 				<form method="get" id = "formId">
 					<div>
 						<label for="first_name" aria-label ="first_name">Prénom</label>
-						<input type="text" name="first_name" id="first_name" aria-labelledby="first_name" required />
+						<input type="text" name="first_name" id="first_name" aria-labelledby="first_name" prequired />
             <label for ="last_name" aria-label ="last name">Nom</label>
             <input type ="text" name ="last_name" id="last_name" aria-labelledby="last_name" required/>
             <label for="email">Email</label>
@@ -64,6 +64,15 @@
 				</form>
 			</div>
 		</div>
+    <div id="lightbox" class="lightbox" aria-expanded="false" role="dialog" aria-hidden="true" aria-label="box focus of the selected picture">
+        <button class="lightbox__close" onclick="closeLightbox()"></button>
+        <button class="lightbox__previous" id="lightbox__previous"></button>
+        <button class="lightbox__next" id="lightbox__next"></button>
+      <div id="lightbox__container" class="lightbox__container">
+        
+      </div>
+      <span id="pictureLightboxName"></span>
+    </div>
     
   
     

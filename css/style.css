@@ -17,12 +17,6 @@ body {
 }
 
 
-main {
-
-margin-left: 100px;
-
-}
-
 
 header {
     display: flex;
@@ -34,23 +28,27 @@ header {
     width: 1440px;
 }
 
-h1 {
+.main_title {
     color: #901C1C;
-    
+    font-weight: 400;
+    font-size: 36px;
+    margin-left: 51.8vw;
+    white-space: nowrap;
 }
 
 .logo {
     
     height: 50px;
-    margin-left: 323px;
+    margin-left: 17.5vw;
+    
 }
 
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 60px;
-    margin-top: 100px;
-    margin-right: 100px;
+    margin-top: 50px;
+    margin-bottom: 100px;
     
 }
 
@@ -73,7 +71,7 @@ h1 {
     color: #D3573C;
     font-size: 36px;
     margin-top: 4px;
-    
+    font-weight: 400;
 }
 
 .photographer_section article h3 {
@@ -112,12 +110,13 @@ h1 {
     position:relative;
     display: grid;
     width: 1240px;
-    margin-left: 220px;
+    margin: auto;
 }
 .photograph-header article {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin: inherit;
     
 }
 .photograph-header img {
@@ -182,7 +181,8 @@ nav {
     display: grid;
     position: relative;
     grid-template-columns: 350px 350px 350px;
-    margin-left: 220px;
+    margin: auto;
+    margin-right: 7%;
     margin-top: 50px;
     gap: 95px;
     width: 1440px;
@@ -295,7 +295,7 @@ li {
   .listbox-area {
     display: flex;
     align-items: center;
-    margin-left: 131px;
+    margin-left: 13%;
   }
 
   button:hover{
@@ -386,12 +386,29 @@ li {
     width: max-content;
 }
 
-.lightbox span {
+.lightbox__first {
     font-size: 24px;
-    margin-left: 5.3vw;
-    line-height: 50px;
+    
+    
     color: #901C1C;
     font-size: 400;
+    margin-top: 67.75%;
+    left: 8%;
+    width: max-content;
+    position: absolute;
+    
+}
+
+#pictureLightboxName {
+    font-size: 24px;
+    
+    
+    color: #901C1C;
+    font-size: 400;
+    
+    margin-left:8%;
+    width: max-content;
+    
 }
 
 #lightbox video {

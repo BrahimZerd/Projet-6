@@ -1,5 +1,5 @@
 //fonction ouverture de la modale
-function displayModal() {
+function displayModal(e) {
     
      
     const closeButton = document.getElementById('close_button');
@@ -40,6 +40,8 @@ function displayModal() {
     email.focus();
     message.focus();
     sendButton.focus();
+
+    
 } 
 
 
@@ -94,6 +96,7 @@ function closeModal() {
 }
 
 
+    
 
 
             
