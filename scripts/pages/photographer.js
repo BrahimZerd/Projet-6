@@ -45,9 +45,9 @@ function getPhotographersId() {
 
         
         
-        console.log(mediaElements)
+        
         const slidesIds = mediaArray.map((oneMedia) => parseInt(oneMedia.dataset.id))
-        console.log(slidesIds)
+        
 
         mediaArray.forEach((oneMedia => oneMedia.addEventListener('click', function(){
             const span = document.createElement('span');
@@ -69,7 +69,7 @@ function getPhotographersId() {
                 
                 const nextIndex = currentIndex % mediaArray.length
                 container.appendChild(mediaArray[nextIndex+1]);
-                console.log(mediaArray[nextIndex])
+                
                 spanName.innerHTML = mediaArray[nextIndex+1].alt;
                 if(mediaArray[nextIndex+1].alt == null){
                     spanName.innerHTML = mediaArray[nextIndex+1].title;}
@@ -245,7 +245,7 @@ function sortMedias(photographerMedias) {
                         
                         const nextIndex = currentIndex % mediaArray.length
                         container.appendChild(mediaArray[nextIndex+1]);
-                        console.log(mediaArray[nextIndex])
+                        
                         spanName.innerHTML = mediaArray[nextIndex+1].alt;
                         if(mediaArray[nextIndex+1].alt == null){
                             spanName.innerHTML = mediaArray[nextIndex+1].title;}
@@ -263,7 +263,7 @@ function sortMedias(photographerMedias) {
                         spanName.innerHTML = mediaArray[prevIndex].alt;
                         if(mediaArray[prevIndex].alt == null){
                             spanName.innerHTML = mediaArray[prevIndex].title;}
-                        console.log(currentIndex)
+                        
                         if(currentIndex !=-1 && currentIndex != 0){
                             currentIndex--;
                           } 
@@ -274,11 +274,11 @@ function sortMedias(photographerMedias) {
                         function (e) {
                             if (e.key == "ArrowLeft") {
                                 previousBtn.click();
-                                previousBtn.focus();                            //console.log(window);
+                                previousBtn.focus();                         
                             } else if (e.key == "ArrowRight") {
                                 nextBtn.click();
                                 nextBtn.focus();                                                                        
-                                // console.log(window);
+                                
                             } else if (e.key == "Escape") {
                                 location.reload()
                             }
@@ -318,9 +318,9 @@ function sortMedias(photographerMedias) {
         
                 
                 
-                console.log(mediaElements)
+                
                 const slidesIds = mediaArray.map((oneMedia) => parseInt(oneMedia.dataset.id))
-                console.log(slidesIds)
+               
         
                 mediaArray.forEach((oneMedia => oneMedia.addEventListener('click', function(){
                     const span = document.createElement('span');
@@ -342,7 +342,7 @@ function sortMedias(photographerMedias) {
                         
                         const nextIndex = currentIndex % mediaArray.length
                         container.appendChild(mediaArray[nextIndex+1]);
-                        console.log(mediaArray[nextIndex])
+                        
                         spanName.innerHTML = mediaArray[nextIndex+1].alt;
                         if(mediaArray[nextIndex+1].alt == null){
                             spanName.innerHTML = mediaArray[nextIndex+1].title;}
@@ -360,7 +360,7 @@ function sortMedias(photographerMedias) {
                         spanName.innerHTML = mediaArray[prevIndex].alt;
                         if(mediaArray[prevIndex].alt == null){
                             spanName.innerHTML = mediaArray[prevIndex].title;}
-                        console.log(currentIndex)
+                        
                         if(currentIndex !=-1 && currentIndex != 0){
                             currentIndex--;
                           } 
@@ -371,11 +371,11 @@ function sortMedias(photographerMedias) {
                         function (e) {
                             if (e.key == "ArrowLeft") {
                                 previousBtn.click();
-                                previousBtn.focus();                            //console.log(window);
+                                previousBtn.focus();                         
                             } else if (e.key == "ArrowRight") {
                                 nextBtn.click();
                                 nextBtn.focus();                                                                        
-                                // console.log(window);
+                               
                             } else if (e.key == "Escape") {
                                 location.reload()
                             }
@@ -397,7 +397,7 @@ function sortMedias(photographerMedias) {
             
         })
         const photographerBook = document.querySelector(".photographer-book");
-        console.log(photographerMedias)
+        
         photographerBook.innerHTML= "";
         photographerMedias.forEach((photographerMedia) => {
             DisplayMedia(photographerMedia, photographerMedias);
@@ -468,11 +468,11 @@ function sortMedias(photographerMedias) {
                         function (e) {
                             if (e.key == "ArrowLeft") {
                                 previousBtn.click();
-                                previousBtn.focus();                            //console.log(window);
+                                previousBtn.focus();                            
                             } else if (e.key == "ArrowRight") {
                                 nextBtn.click();
                                 nextBtn.focus();                                                                        
-                                // console.log(window);
+                               
                             } else if (e.key == "Escape") {
                                 location.reload()
                             }
