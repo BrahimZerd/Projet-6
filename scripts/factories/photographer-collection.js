@@ -1,4 +1,4 @@
-    function PhotographerMediaFactory(data,medias) {
+    function PhotographerMediaFactory(data) {
         
         let {id, photographerId, name, title, image,video, likes, price, date} = data;
     
@@ -14,7 +14,7 @@
         const h2 = document.createElement( 'h2' );
         const span = document.createElement('span');
         const totaLikes = document.querySelector('.likes');
-        const spanLightbox = document.querySelector('span__lightbox');
+        
 
         
         

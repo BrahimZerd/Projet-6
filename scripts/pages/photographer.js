@@ -43,12 +43,6 @@ function getPhotographersId() {
         const previousBtn = document.getElementById('lightbox__previous');
         const vid = document.querySelector('video');
 
-        
-        
-        
-        const slidesIds = mediaArray.map((oneMedia) => parseInt(oneMedia.dataset.id))
-        
-
         mediaArray.forEach((oneMedia => oneMedia.addEventListener('click', function(){
             const span = document.createElement('span');
             span.classList.add('lightbox__first');
@@ -60,6 +54,7 @@ function getPhotographersId() {
             header.style.display = "none";
             let currentIndex = mediaArray.indexOf(oneMedia)
             vid.setAttribute('controls', "");
+            console.log(mediaElements);
             
             
             nextBtn.addEventListener('click', function() {
@@ -67,27 +62,31 @@ function getPhotographersId() {
                 const spanName = document.getElementById('pictureLightboxName');
                 spanName.innerHTML = "";
                 
-                const nextIndex = currentIndex % mediaArray.length
+                let nextIndex = currentIndex % mediaArray.length
+                if(mediaArray.length == nextIndex + 1){
+                    nextIndex = -1
+                }
                 container.appendChild(mediaArray[nextIndex+1]);
-                
                 spanName.innerHTML = mediaArray[nextIndex+1].alt;
                 if(mediaArray[nextIndex+1].alt == null){
                     spanName.innerHTML = mediaArray[nextIndex+1].title;}
-                    
-            
-                currentIndex++;
+                    currentIndex++;
             })
 
             previousBtn.addEventListener('click',function(){
                 const spanName = document.getElementById('pictureLightboxName');
                 container.innerHTML = "";
                 spanName.innerHTML = "";
-                const prevIndex = currentIndex  % mediaArray.length -1                                  
+                let prevIndex = currentIndex  % mediaArray.length -1
+                if(prevIndex == -1){
+                    prevIndex = mediaArray.length -1
+                }
+
                 container.appendChild(mediaArray[prevIndex]);
                 spanName.innerHTML = mediaArray[prevIndex].alt;
                 if(mediaArray[prevIndex].alt == null){
                     spanName.innerHTML = mediaArray[prevIndex].title;}
-                console.log(currentIndex)
+                
                 if(currentIndex !=-1 && currentIndex != 0){
                     currentIndex--;
                   } 
@@ -98,11 +97,11 @@ function getPhotographersId() {
                 function (e) {
                     if (e.key == "ArrowLeft") {
                         previousBtn.click();
-                        previousBtn.focus();                            //console.log(window);
+                                                 
                     } else if (e.key == "ArrowRight") {
                         nextBtn.click();
-                        nextBtn.focus();                                                                        
-                        // console.log(window);
+                                                                                               
+                        
                     } else if (e.key == "Escape") {
                         location.reload()
                     }
@@ -207,87 +206,84 @@ function sortMedias(photographerMedias) {
         //DisplayMedia(photographerMedia);
         photographerMedias.forEach((photographerMedia) => {
             DisplayMedia(photographerMedia,photographerMedias);
-            setTimeout(() => {
-                let mediaElements = document.getElementsByClassName('media__element')
-                
-                let mediaArray = Array.from(mediaElements)
-                const container = document.getElementById('lightbox__container');
-                const lightbox = document.getElementById('lightbox');
-                const main = document.getElementById('main');
-                const header = document.querySelector('header');
-                const nextBtn = document.getElementById('lightbox__next');
-                const previousBtn = document.getElementById('lightbox__previous');
-                const vid = document.querySelector('video');
-        
-                
-                
-                console.log(mediaElements)
-                const slidesIds = mediaArray.map((oneMedia) => parseInt(oneMedia.dataset.id))
-                console.log(slidesIds)
-        
-                mediaArray.forEach((oneMedia => oneMedia.addEventListener('click', function(){
-                    const span = document.createElement('span');
-                    span.classList.add('lightbox__first');
-                    container.appendChild(oneMedia);
-                    container.appendChild(span);
-                    span.innerHTML = oneMedia.alt;
-                    lightbox.style.display = "block";
-                    main.style.display = "none";
-                    header.style.display = "none";
-                    let currentIndex = mediaArray.indexOf(oneMedia)
-                    vid.setAttribute('controls', "");
+            
+            let mediaElements = document.getElementsByClassName('media__element')
                     
+            let mediaArray = Array.from(mediaElements)
+            const container = document.getElementById('lightbox__container');
+            const lightbox = document.getElementById('lightbox');
+            const main = document.getElementById('main');
+            const header = document.querySelector('header');
+            const nextBtn = document.getElementById('lightbox__next');
+            const previousBtn = document.getElementById('lightbox__previous');
+            const vid = document.querySelector('video');
+    
+            mediaArray.forEach((oneMedia => oneMedia.addEventListener('click', function(){
+                const span = document.createElement('span');
+                span.classList.add('lightbox__first');
+                container.appendChild(oneMedia);
+                container.appendChild(span);
+                span.innerHTML = oneMedia.alt;
+                lightbox.style.display = "block";
+                main.style.display = "none";
+                header.style.display = "none";
+                let currentIndex = mediaArray.indexOf(oneMedia)
+                vid.setAttribute('controls', "");
+                console.log(mediaElements);
+                
+                
+                nextBtn.addEventListener('click', function() {
+                    container.innerHTML = "";
+                    const spanName = document.getElementById('pictureLightboxName');
+                    spanName.innerHTML = "";
                     
-                    nextBtn.addEventListener('click', function() {
-                        container.innerHTML = "";
-                        const spanName = document.getElementById('pictureLightboxName');
-                        spanName.innerHTML = "";
-                        
-                        const nextIndex = currentIndex % mediaArray.length
-                        container.appendChild(mediaArray[nextIndex+1]);
-                        
-                        spanName.innerHTML = mediaArray[nextIndex+1].alt;
-                        if(mediaArray[nextIndex+1].alt == null){
-                            spanName.innerHTML = mediaArray[nextIndex+1].title;}
-                            
-                    
+                    let nextIndex = currentIndex % mediaArray.length
+                    if(mediaArray.length == nextIndex + 1){
+                        nextIndex = -1
+                    }
+                    container.appendChild(mediaArray[nextIndex+1]);
+                    spanName.innerHTML = mediaArray[nextIndex+1].alt;
+                    if(mediaArray[nextIndex+1].alt == null){
+                        spanName.innerHTML = mediaArray[nextIndex+1].title;}
                         currentIndex++;
-                    })
-        
-                    previousBtn.addEventListener('click',function(){
-                        const spanName = document.getElementById('pictureLightboxName');
-                        container.innerHTML = "";
-                        spanName.innerHTML = "";
-                        const prevIndex = currentIndex  % mediaArray.length -1                                  
-                        container.appendChild(mediaArray[prevIndex]);
-                        spanName.innerHTML = mediaArray[prevIndex].alt;
-                        if(mediaArray[prevIndex].alt == null){
-                            spanName.innerHTML = mediaArray[prevIndex].title;}
+                })
+    
+                previousBtn.addEventListener('click',function(){
+                    const spanName = document.getElementById('pictureLightboxName');
+                    container.innerHTML = "";
+                    spanName.innerHTML = "";
+                    let prevIndex = currentIndex  % mediaArray.length -1
+                    if(prevIndex == -1){
+                        prevIndex = mediaArray.length -1
+                    }
+    
+                    container.appendChild(mediaArray[prevIndex]);
+                    spanName.innerHTML = mediaArray[prevIndex].alt;
+                    if(mediaArray[prevIndex].alt == null){
+                        spanName.innerHTML = mediaArray[prevIndex].title;}
+                    
+                    if(currentIndex !=-1 && currentIndex != 0){
+                        currentIndex--;
+                      } 
+                })
+    
+                window.addEventListener(
+                    "keydown",
+                    function (e) {
+                        if (e.key == "ArrowLeft") {
+                            previousBtn.click();
+                                                     
+                        } else if (e.key == "ArrowRight") {
+                            nextBtn.click();
+                        } else if (e.key == "Escape") {
+                            location.reload()
+                        }
+                          },
+                          false
+                        );
                         
-                        if(currentIndex !=-1 && currentIndex != 0){
-                            currentIndex--;
-                          } 
-                    })
-        
-                    window.addEventListener(
-                        "keydown",
-                        function (e) {
-                            if (e.key == "ArrowLeft") {
-                                previousBtn.click();
-                                previousBtn.focus();                         
-                            } else if (e.key == "ArrowRight") {
-                                nextBtn.click();
-                                nextBtn.focus();                                                                        
-                                
-                            } else if (e.key == "Escape") {
-                                location.reload()
-                            }
-                              },
-                              false
-                            );
-                            
-                })))
-            }, 0);
+            })))
+            
         });
     })
     popular.addEventListener('click',function() {
@@ -304,87 +300,84 @@ function sortMedias(photographerMedias) {
         photographerBook.innerHTML= "";
         photographerMedias.forEach((photographerMedia) => {
             DisplayMedia(photographerMedia, photographerMedias);
-            setTimeout(() => {
-                let mediaElements = document.getElementsByClassName('media__element')
-                
-                let mediaArray = Array.from(mediaElements)
-                const container = document.getElementById('lightbox__container');
-                const lightbox = document.getElementById('lightbox');
-                const main = document.getElementById('main');
-                const header = document.querySelector('header');
-                const nextBtn = document.getElementById('lightbox__next');
-                const previousBtn = document.getElementById('lightbox__previous');
-                const vid = document.querySelector('video');
-        
-                
-                
-                
-                const slidesIds = mediaArray.map((oneMedia) => parseInt(oneMedia.dataset.id))
-               
-        
-                mediaArray.forEach((oneMedia => oneMedia.addEventListener('click', function(){
-                    const span = document.createElement('span');
-                    span.classList.add('lightbox__first');
-                    container.appendChild(oneMedia);
-                    container.appendChild(span);
-                    span.innerHTML = oneMedia.alt;
-                    lightbox.style.display = "block";
-                    main.style.display = "none";
-                    header.style.display = "none";
-                    let currentIndex = mediaArray.indexOf(oneMedia)
-                    vid.setAttribute('controls', "");
+            
+            let mediaElements = document.getElementsByClassName('media__element')
                     
+            let mediaArray = Array.from(mediaElements)
+            const container = document.getElementById('lightbox__container');
+            const lightbox = document.getElementById('lightbox');
+            const main = document.getElementById('main');
+            const header = document.querySelector('header');
+            const nextBtn = document.getElementById('lightbox__next');
+            const previousBtn = document.getElementById('lightbox__previous');
+            const vid = document.querySelector('video');
+    
+            mediaArray.forEach((oneMedia => oneMedia.addEventListener('click', function(){
+                const span = document.createElement('span');
+                span.classList.add('lightbox__first');
+                container.appendChild(oneMedia);
+                container.appendChild(span);
+                span.innerHTML = oneMedia.alt;
+                lightbox.style.display = "block";
+                main.style.display = "none";
+                header.style.display = "none";
+                let currentIndex = mediaArray.indexOf(oneMedia)
+                vid.setAttribute('controls', "");
+                console.log(mediaElements);
+                
+                
+                nextBtn.addEventListener('click', function() {
+                    container.innerHTML = "";
+                    const spanName = document.getElementById('pictureLightboxName');
+                    spanName.innerHTML = "";
                     
-                    nextBtn.addEventListener('click', function() {
-                        container.innerHTML = "";
-                        const spanName = document.getElementById('pictureLightboxName');
-                        spanName.innerHTML = "";
-                        
-                        const nextIndex = currentIndex % mediaArray.length
-                        container.appendChild(mediaArray[nextIndex+1]);
-                        
-                        spanName.innerHTML = mediaArray[nextIndex+1].alt;
-                        if(mediaArray[nextIndex+1].alt == null){
-                            spanName.innerHTML = mediaArray[nextIndex+1].title;}
-                            
-                    
+                    let nextIndex = currentIndex % mediaArray.length
+                    if(mediaArray.length == nextIndex + 1){
+                        nextIndex = -1
+                    }
+                    container.appendChild(mediaArray[nextIndex+1]);
+                    spanName.innerHTML = mediaArray[nextIndex+1].alt;
+                    if(mediaArray[nextIndex+1].alt == null){
+                        spanName.innerHTML = mediaArray[nextIndex+1].title;}
                         currentIndex++;
-                    })
-        
-                    previousBtn.addEventListener('click',function(){
-                        const spanName = document.getElementById('pictureLightboxName');
-                        container.innerHTML = "";
-                        spanName.innerHTML = "";
-                        const prevIndex = currentIndex  % mediaArray.length -1                                  
-                        container.appendChild(mediaArray[prevIndex]);
-                        spanName.innerHTML = mediaArray[prevIndex].alt;
-                        if(mediaArray[prevIndex].alt == null){
-                            spanName.innerHTML = mediaArray[prevIndex].title;}
+                })
+    
+                previousBtn.addEventListener('click',function(){
+                    const spanName = document.getElementById('pictureLightboxName');
+                    container.innerHTML = "";
+                    spanName.innerHTML = "";
+                    let prevIndex = currentIndex  % mediaArray.length -1
+                    if(prevIndex == -1){
+                        prevIndex = mediaArray.length -1
+                    }
+    
+                    container.appendChild(mediaArray[prevIndex]);
+                    spanName.innerHTML = mediaArray[prevIndex].alt;
+                    if(mediaArray[prevIndex].alt == null){
+                        spanName.innerHTML = mediaArray[prevIndex].title;}
+                    
+                    if(currentIndex !=-1 && currentIndex != 0){
+                        currentIndex--;
+                      } 
+                })
+    
+                window.addEventListener(
+                    "keydown",
+                    function (e) {
+                        if (e.key == "ArrowLeft") {
+                            previousBtn.click();
+                                                     
+                        } else if (e.key == "ArrowRight") {
+                            nextBtn.click();
+                        } else if (e.key == "Escape") {
+                            location.reload()
+                        }
+                          },
+                          false
+                        );
                         
-                        if(currentIndex !=-1 && currentIndex != 0){
-                            currentIndex--;
-                          } 
-                    })
-        
-                    window.addEventListener(
-                        "keydown",
-                        function (e) {
-                            if (e.key == "ArrowLeft") {
-                                previousBtn.click();
-                                previousBtn.focus();                         
-                            } else if (e.key == "ArrowRight") {
-                                nextBtn.click();
-                                nextBtn.focus();                                                                        
-                               
-                            } else if (e.key == "Escape") {
-                                location.reload()
-                            }
-                              },
-                              false
-                            );
-                            
-                })))
-            }, 0);
+            })))
+            
         });
     })
     date.addEventListener('click',function(){
@@ -398,90 +391,88 @@ function sortMedias(photographerMedias) {
         })
         const photographerBook = document.querySelector(".photographer-book");
         
-        photographerBook.innerHTML= "";
-        photographerMedias.forEach((photographerMedia) => {
-            DisplayMedia(photographerMedia, photographerMedias);
-            setTimeout(() => {
-                let mediaElements = document.getElementsByClassName('media__element')
+                photographerBook.innerHTML= "";
+            photographerMedias.forEach((photographerMedia) => {
+                DisplayMedia(photographerMedia, photographerMedias);
+
                 
-                let mediaArray = Array.from(mediaElements)
-                const container = document.getElementById('lightbox__container');
-                const lightbox = document.getElementById('lightbox');
-                const main = document.getElementById('main');
-                const header = document.querySelector('header');
-                const nextBtn = document.getElementById('lightbox__next');
-                const previousBtn = document.getElementById('lightbox__previous');
-                const vid = document.querySelector('video');
-        
-                
-                
-                console.log(mediaElements)
-                const slidesIds = mediaArray.map((oneMedia) => parseInt(oneMedia.dataset.id))
-                console.log(slidesIds)
-        
-                mediaArray.forEach((oneMedia => oneMedia.addEventListener('click', function(){
-                    const span = document.createElement('span');
-                    span.classList.add('lightbox__first');
-                    container.appendChild(oneMedia);
-                    container.appendChild(span);
-                    span.innerHTML = oneMedia.alt;
-                    lightbox.style.display = "block";
-                    main.style.display = "none";
-                    header.style.display = "none";
-                    let currentIndex = mediaArray.indexOf(oneMedia)
-                    vid.setAttribute('controls', "");
+                    let mediaElements = document.getElementsByClassName('media__element')
                     
-                    
-                    nextBtn.addEventListener('click', function() {
-                        container.innerHTML = "";
-                        const spanName = document.getElementById('pictureLightboxName');
-                        spanName.innerHTML = "";
+                    let mediaArray = Array.from(mediaElements)
+                    const container = document.getElementById('lightbox__container');
+                    const lightbox = document.getElementById('lightbox');
+                    const main = document.getElementById('main');
+                    const header = document.querySelector('header');
+                    const nextBtn = document.getElementById('lightbox__next');
+                    const previousBtn = document.getElementById('lightbox__previous');
+                    const vid = document.querySelector('video');
+            
+                    mediaArray.forEach((oneMedia => oneMedia.addEventListener('click', function(){
+                        const span = document.createElement('span');
+                        span.classList.add('lightbox__first');
+                        container.appendChild(oneMedia);
+                        container.appendChild(span);
+                        span.innerHTML = oneMedia.alt;
+                        lightbox.style.display = "block";
+                        main.style.display = "none";
+                        header.style.display = "none";
+                        let currentIndex = mediaArray.indexOf(oneMedia)
+                        vid.setAttribute('controls', "");
+                        console.log(mediaElements);
                         
-                        const nextIndex = currentIndex % mediaArray.length
-                        container.appendChild(mediaArray[nextIndex+1]);
-                        console.log(mediaArray[nextIndex])
-                        spanName.innerHTML = mediaArray[nextIndex+1].alt;
-                        if(mediaArray[nextIndex+1].alt == null){
-                            spanName.innerHTML = mediaArray[nextIndex+1].title;}
+                        
+                        nextBtn.addEventListener('click', function() {
+                            container.innerHTML = "";
+                            const spanName = document.getElementById('pictureLightboxName');
+                            spanName.innerHTML = "";
                             
-                    
-                        currentIndex++;
-                    })
-        
-                    previousBtn.addEventListener('click',function(){
-                        const spanName = document.getElementById('pictureLightboxName');
-                        container.innerHTML = "";
-                        spanName.innerHTML = "";
-                        const prevIndex = currentIndex  % mediaArray.length -1                                  
-                        container.appendChild(mediaArray[prevIndex]);
-                        spanName.innerHTML = mediaArray[prevIndex].alt;
-                        if(mediaArray[prevIndex].alt == null){
-                            spanName.innerHTML = mediaArray[prevIndex].title;}
-                        console.log(currentIndex)
-                        if(currentIndex !=-1 && currentIndex != 0){
-                            currentIndex--;
-                          } 
-                    })
-        
-                    window.addEventListener(
-                        "keydown",
-                        function (e) {
-                            if (e.key == "ArrowLeft") {
-                                previousBtn.click();
-                                previousBtn.focus();                            
-                            } else if (e.key == "ArrowRight") {
-                                nextBtn.click();
-                                nextBtn.focus();                                                                        
-                               
-                            } else if (e.key == "Escape") {
-                                location.reload()
+                            let nextIndex = currentIndex % mediaArray.length
+                            if(mediaArray.length == nextIndex + 1){
+                                nextIndex = -1
                             }
-                              },
-                              false
-                            );
+                            container.appendChild(mediaArray[nextIndex+1]);
+                            spanName.innerHTML = mediaArray[nextIndex+1].alt;
+                            if(mediaArray[nextIndex+1].alt == null){
+                                spanName.innerHTML = mediaArray[nextIndex+1].title;}
+                                currentIndex++;
+                        })
+            
+                        previousBtn.addEventListener('click',function(){
+                            const spanName = document.getElementById('pictureLightboxName');
+                            container.innerHTML = "";
+                            spanName.innerHTML = "";
+                            let prevIndex = currentIndex  % mediaArray.length -1
+                            if(prevIndex == -1){
+                                prevIndex = mediaArray.length -1
+                            }
+            
+                            container.appendChild(mediaArray[prevIndex]);
+                            spanName.innerHTML = mediaArray[prevIndex].alt;
+                            if(mediaArray[prevIndex].alt == null){
+                                spanName.innerHTML = mediaArray[prevIndex].title;}
                             
-                })))
-            }, 0);
+                            if(currentIndex !=-1 && currentIndex != 0){
+                                currentIndex--;
+                              } 
+                        })
+            
+                        window.addEventListener(
+                            "keydown",
+                            function (e) {
+                                if (e.key == "ArrowLeft") {
+                                    previousBtn.click();
+                                                             
+                                } else if (e.key == "ArrowRight") {
+                                    nextBtn.click();
+                                } else if (e.key == "Escape") {
+                                    location.reload()
+                                }
+                                  },
+                                  false
+                                );
+                                
+                    })))
+                
         });
     })
 }

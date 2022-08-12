@@ -5,7 +5,6 @@ function photographerFactory(data) {
     const picture = `assets/photographers/${portrait}`;
    
     function getUserCardDOM() {
-        const photographerLikes = document.getElementById(".photographer-informations");
         const a = document.createElement('a');
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );

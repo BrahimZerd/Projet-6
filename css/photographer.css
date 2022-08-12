@@ -131,10 +131,9 @@ form input {
     width: 42px;
     height: 42px;
     position: fixed;
-    right: 341px;
-    top: 77px;
+    right: 17.5%;
+    top: 5%;
     z-index: 12;
-    margin-top: -14px;
     cursor: pointer;
     text-indent: -5000px;
     color: #901C1C;
